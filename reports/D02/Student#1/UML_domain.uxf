@@ -1,0 +1,100 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>11</x><y>0</y><w>242</w><h>132</h></coordinates><panel_attributes>&lt;&lt;Datatype&gt;&gt;
+DefaultUserIdentity
+--
++ name: String {NotBlank}
++ surname: String {NotBlank}
++ email: String {NotBlank, Email}
++ / fullName: String {NotBlank}
+bg=yellow
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>11</x><y>198</y><w>242</w><h>77</h></coordinates><panel_attributes>&lt;&lt;Datatype&gt;&gt;
+UserIdentity
+--
+bg=green
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>132</x><y>121</y><w>33</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>418</x><y>11</y><w>462</w><h>187</h></coordinates><panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String {Unique, NotBlank, Pattern(“^[A-Z]{3}-[0-9]{4}$”)}
++ title: String {NotBlank, Length(1,75)}
++ abstract: String {NotBlank, Length(1,100)}
++ fatalErrors: boolean
++ cost: int {Range(0, 10000)}
+- link: String{URL, Length(0,255)}
++ published: boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>473</x><y>561</y><w>396</w><h>187</h></coordinates><panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+UserStory
+--
++ title: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ estimatedCost: int {Range(0, 10000)}
++ acceptanceCriteria: String {NotBlank, Length(1,100)}
++ priority: Priority
+- link: String{URL, Length(0,255)}
++ published: boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>979</x><y>572</y><w>143</w><h>132</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
+Priority
+--
++ MUST
++ SHOULD
++ COULD
++ WONT
+bg=green
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>506</x><y>352</y><w>187</w><h>77</h></coordinates><panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+ProjectUserStory
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>517</y><w>385</w><h>275</h></coordinates><panel_attributes>&lt;&lt;Form&gt;&gt;
+ManagerDashboard
+--
++ totalNumberMustUserStories: int
++ totalNumberShouldUserStories: int
++ totalNumberCouldUserStories: int
++ totalNumberWontUserStories: int
+- averageEstimatedCostUserStories: Double
+- deviationEstimatedCostUserStories: Double
+- minimunEstimatedCostUserStories: Integer
+- maximumEstimatedCostUserStories: Integer
+- averageCostProjects: Double
+- deviationCostProjects: Double
+- minimunCostProjects: Integer
+- maximumCostNumberProjects: Integer
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>825</x><y>319</y><w>352</w><h>132</h></coordinates><panel_attributes>&lt;&lt;Role&gt;&gt;
+Manager
+--
++ degree: String {NotBlank, Length(1,75)}
++ overview: String {NotBlank, Length(1,100)}
++ certifications: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(0,255)}
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>847</x><y>187</y><w>110</w><h>154</h></coordinates><panel_attributes>lt=x-&gt;
+m1= 0..*
+m2= 1
+  Created by </panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>836</x><y>440</y><w>121</w><h>143</h></coordinates><panel_attributes>lt=x-&gt;
+m1= 0..*
+m2= 1
+  Created by ^</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>418</y><w>55</w><h>165</h></coordinates><panel_attributes>lt=x-&gt;
+m1= 0..*
+m2= 1
+</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>187</y><w>55</w><h>187</h></coordinates><panel_attributes>lt=x-&gt;
+m1= 0..*
+m2= 1
+</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>990</x><y>55</y><w>198</w><h>132</h></coordinates><panel_attributes>bg=red
+To be published, there must
+be no fatal errors, 
+and at least one user
+story along with all its 
+associated user 
+ stories must have
+ been published.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>869</x><y>99</y><w>143</w><h>44</h></coordinates><panel_attributes>lt=..
+</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>143</x><y>341</y><w>242</w><h>88</h></coordinates><panel_attributes>bg=red
+user stories associated with
+a project must have been
+created by the same administrator
+(this manager is the one who created
+the project)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>363</y><w>154</w><h>44</h></coordinates><panel_attributes>lt=..
+</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element></diagram>
